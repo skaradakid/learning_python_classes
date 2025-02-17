@@ -1,3 +1,7 @@
+"""In this project will learn how about inheritance in python
+    obb by buildong a vehicle system
+"""
+
 class Vehicle:
     def __init__(self, brand, model, year):
         self.brand = brand
@@ -14,7 +18,6 @@ class car(Vehicle):
         Vehicle.__init__(self, brand, model, year)
     
     def get_vehicle_info(self):
-        # Override to include the number of doors
         base_info = super().get_vehicle_info()
         print (f"{base_info} \nDoors: {self.num_of_doors}")
 
