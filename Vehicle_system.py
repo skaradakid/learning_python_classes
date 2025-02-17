@@ -1,5 +1,5 @@
 """In this project will learn how about inheritance in python
-    obb by buildong a vehicle system
+    obb by building a vehicle system
 """
 
 class Vehicle:
