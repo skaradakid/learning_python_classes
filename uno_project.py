@@ -18,15 +18,42 @@ class cards:
             self.c_set.append(("wild",self.color))
             self.c_set.append(("wild_draw4",self.color))
             self.c_set.append(("wild_draw4",self.color))
+            return self.c_set
+
+class player():
+    def __init__(self, name, hand=[]):
+        self.hand = hand
+        self.name = name
+
+    def play(self):
+        print(f"{self.name} these are your cards:")
+        for x in self.hand:
+            print(f"{self.hand.index(x)}-{x}")
+
+        print("\nplay a card")
+        pick = int(input("choose by index: "))
+        print(self.hand[pick])
+
+
+player1 = player("karabo", [('wild', 'blue'), (7, 'yellow'), (4, 'green'), (9, 'red')])
+player1.play()
+        
+
+        
+        
 
 red_cards = cards("red")
-red_cards.create_cards()
 blue_cards = cards("blue")
-blue_cards.create_cards()
 green_cards = cards("green")
-green_cards.create_cards()
 yellow_cards = cards("yellow")
-yellow_cards.create_cards()
-print(green_cards.c_set)
+
+def card_deck():
+    all_cards = green_cards.create_cards() + yellow_cards.create_cards() + red_cards.create_cards() + blue_cards.create_cards()
+    shuffe = list(set(all_cards))
+    return shuffe
+
+shuffled_cards = card_deck()
+discard_pile =[]
+drop_zone = []
 
     
