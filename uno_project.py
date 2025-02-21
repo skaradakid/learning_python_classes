@@ -31,29 +31,51 @@ class player():
             print(f"{self.hand.index(x)}-{x}")
 
         print("\nplay a card")
-        pick = int(input("choose by index: "))
-        print(self.hand[pick])
+        pick = int(input("choose by index or input pick to draw a card: "))
+        if pick == "pick":
+            self.hand.append(drop_zone[-1])
+            drop_zone.pop(-1)
+        while True:
+            try:
+                print(self.hand[pick])
+                break
+            except:
+                print("choose a valid number")
+                pick = int(input("choose by index: "))
+        return pick
 
+class computer:
+    def __init__(self, name="npc", hand=[]):
+        self.hand = hand
+        self.name = name
 
-player1 = player("karabo", [('wild', 'blue'), (7, 'yellow'), (4, 'green'), (9, 'red')])
-player1.play()
-        
+    def play(self):
+        for x in self.hand:
+            if x[0] == drop_zone[-1][0] or x[1] == drop_zone[-1][1]:
+                print(x)
+                return x
+        self.hand.append(drop_zone[-1])
+        drop_zone.pop(-1)
 
-        
-        
+def revs_order(lst):
+    return(lst[::-1])
+karabo = player("karabo")
+cpu = computer()
+def game(*players: object):
+    players_lst = [players]
+    print(revs_order(players_lst))
+    print(players_lst)
+    # red_cards = cards("red")
+    # blue_cards = cards("blue")
+    # green_cards = cards("green")
+    # yellow_cards = cards("yellow")
 
-red_cards = cards("red")
-blue_cards = cards("blue")
-green_cards = cards("green")
-yellow_cards = cards("yellow")
+    # def card_deck():
+    #     all_cards = green_cards.create_cards() + yellow_cards.create_cards() + red_cards.create_cards() + blue_cards.create_cards()
+    #     shuffe = list(set(all_cards))
+    #     return shuffe
 
-def card_deck():
-    all_cards = green_cards.create_cards() + yellow_cards.create_cards() + red_cards.create_cards() + blue_cards.create_cards()
-    shuffe = list(set(all_cards))
-    return shuffe
-
-shuffled_cards = card_deck()
-discard_pile =[]
-drop_zone = []
-
+    # shuffled_cards = card_deck()
+    # drop_zone = []
+game(karabo,cpu)
     
